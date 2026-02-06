@@ -1,141 +1,101 @@
 @import "tailwindcss";
 
-html,body{
-  margin:0;
-  padding:0;
-  font-family:"Space Grotesk", sans-serif;
-  background: #0a0a0a;
-  color:#f3f4f6;
+:root {
+  /* Cinematic Dark Theme (Default & Only) */
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --accent-primary: #3b82f6;
+  --accent-glow: rgba(59, 130, 246, 0.4);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --glass-bg: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+
+  --bg-image: url('./assets/cinematic-bg.png');
 }
-@layer utilities{
-@keyframes blink {
-    0%, 100%{
-      opacity:1;
-    }
-    50%{
-      opacity:0;
-    }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  /* Removed 'transition: color' to avoid oklab interpolation errors during theme switch if not needed, or keep it minimal */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px var(--glass-shadow);
+}
+
+.glass-hover:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent-primary);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #60a5fa, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-padding {
+  @apply py-16 px-6 sm:px-16;
+}
+
+/* Navbar Pop Animation */
+@keyframes navPop {
+  0% {
+    transform: scale(1);
   }
-.animate-blink{
-  animation: blink 0.8s step-end infinite;
- }
-}
 
-@keyframes loading {
-    0%{
-      transform: translateX(-100%);
-    }
-    100%{
-      transform:translateX(0%);
-    }
+  50% {
+    transform: scale(1.04);
   }
-.animate-loading-bar{
-  animation: loading 0.8s ease infinite;
- }
 
-.reveal{
-  opacity:0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  100% {
+    transform: scale(1);
+  }
 }
 
-.reveal.visible{
-  opacity:1;
-  transform: translateY(0);
-}
-.instagram-link {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.instagram-link span {
-  display: block;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.35s cubic-bezier(0.6, 0.4, 0, 1);
-}
-
-.instagram-link:hover span {
-  transform: translate3d(0);
-  opacity: 1;
-}
-
-.linkedin-link {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.linkedin-link span{
-          display: block;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.35s cubic-bezier(0.6, 0.4, 0, 1);
-}
-.linkedin-link:hover span{
-   transform: translate3d(0);
-  opacity: 1;
-
-}
-.Mail-link{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
-.Mail-link span{
-   display: block;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.35s cubic-bezier(0.6, 0.4, 0, 1);
-
-}
-.Mail-link:hover span{
- transform: translate3d( 0);
-  opacity: 1;
-}
-.Github-link{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
-.Github-link span{
-   display: block;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.35s cubic-bezier(0.6, 0.4, 0, 1);
-
-}
-.Github-link:hover span{
- transform: translate3d( 0);
-  opacity: 1;
-}
-
-.tech-link {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.tech-link span {
-  display: block;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.35s cubic-bezier(0.6, 0.4, 0, 1);
-}
-
-.tech-link:hover span {
-  transform: translateY(0);
-  opacity: 1;
+.nav-pop {
+  animation: navPop 0.12s ease-out forwards;
 }

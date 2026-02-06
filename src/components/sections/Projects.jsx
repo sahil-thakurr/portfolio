@@ -1,6 +1,7 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaEnvelope } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, FaEnvelope,  } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
+import { SiTypescript } from "react-icons/si";
 
 const techIcons = {
   React: {
@@ -31,6 +32,10 @@ const techIcons = {
     icon: <FaJs className="h-8 w-8 text-yellow-500" />,
     color: "text-yellow-500",
   },
+   TypeScript: {
+    icon: <SiTypescript  className="h-8 w-8 text-purple-500" />,
+    color: "text-purple-500",
+   }
 };
 
 export const Projects = () => {
@@ -44,24 +49,26 @@ export const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                title: "Portfolio",
+                title: "PORTFOLIO",
                 description1:
                   "Built a responsive portfolio website using React and Vite to showcase projects and skills.",
                 description2:
                   "I built a modern, responsive resume section using React and Tailwind CSS, ensuring clean design and smooth performance.",
                 description3:
                   "I integrated EmailJS to implement a seamless contact form, enabling visitors to reach out to me effortlessly.",
-                techs: ["React", "Node.js", "TailwindCSS", "EmailJS"],
+                techs: ["React", "TailwindCSS"],
                 link: "#Sahil-Portfolio",
               },
               {
-                title: "Amazon Web Clone",
+                title: "LEXICON - Resume Analyzer",
                 description1:
-                  "Built a responsive e-commerce website replicating Amazon’s core interface and functionalities using HTML, CSS, and JavaScript.",
+                  "Built a real-time Resume Analyzer web app using React (TSX), TailwindCSS, and Puter.ai, designed to parse and evaluate resumes instantly.",
                 description2:
-                  "Implemented dynamic product rendering, cart management, and API-based listings using JavaScript, showcasing proficiency in client-side scripting and front-end architecture.",
-                techs: ["HTML", "CSS", "Javascript"],
-                link: "#Clone-App",
+                  "Integrated intelligent feedback and scoring system to deliver actionable insights for resume improvement.",
+                  description3:
+                  "Developed a clean, user-friendly interface with a smooth UX focused on clarity, responsiveness, and minimalism.",
+                techs: ["TypeScript", "React","TailwindCSS", ],
+                link: "#Lexicon",
               },
             ].map((project, index) => (
               <div
